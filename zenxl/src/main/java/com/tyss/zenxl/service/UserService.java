@@ -81,7 +81,7 @@ public class UserService {
 
 			mailMessage.setTo(userPassword.getEmail());
 			mailMessage.setSubject("Greetings");
-			mailMessage.setFrom("swathi.gowdacse@gmail.com");
+			mailMessage.setFrom("swathi@gmail.com");
 			mailMessage.setText("<h1>Your request for the passcode generation is successful and the passcode is </h1>"
 					+ otpGenerate());
 
