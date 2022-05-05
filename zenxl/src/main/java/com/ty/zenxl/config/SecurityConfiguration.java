@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -22,18 +23,20 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private CustomUserDetailsService userDetailsService;
-	
-	@Autowired
-	private PasswordEncoder encoder;
-	
+
 	@Bean
 	public CustomOncePerRequestFilter getOncePerRequestFilter() {
 		return new CustomOncePerRequestFilter();
 	}
+	
+	@Bean
+	public PasswordEncoder encoder() {
+		return new BCryptPasswordEncoder();
+	}
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailsService).passwordEncoder(encoder);
+		auth.userDetailsService(userDetailsService).passwordEncoder(encoder());
 	}
 
 	@Override
@@ -49,7 +52,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 		.authorizeRequests()
 		.antMatchers("swagger-ui/**").permitAll()
-		.antMatchers("/api/v1/login").permitAll()
+		.antMatchers("/api/v1/**").permitAll()
 		.anyRequest().authenticated().and().formLogin();
 	http.addFilterBefore(getOncePerRequestFilter(), UsernamePasswordAuthenticationFilter.class);
 

@@ -1,4 +1,4 @@
-package com.ty.zenxl.controller;
+package com.ty.zenxl.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -9,9 +9,8 @@ import java.util.Date;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -24,22 +23,20 @@ import com.ty.zenxl.entity.User;
 import com.ty.zenxl.pojos.CustomUserDetails;
 import com.ty.zenxl.pojos.JwtUtils;
 import com.ty.zenxl.repository.UserRepository;
-import com.ty.zenxl.service.CustomUserDetailsService;
 
 @ExtendWith(MockitoExtension.class)
-@DataJpaTest
-class TestZenxlAuthController {
-
-	@MockBean
+class TestZenxlAuthService {
+	
+	@Mock
 	private CustomUserDetailsService userDetailsService;
 
-	@MockBean
+	@Mock
 	private AuthenticationEntryPoint authenticationEntryPoint;
 
-	@MockBean
+	@Mock
 	private UserRepository userRepository;
 
-	@MockBean
+	@Mock
 	private JwtUtils jwtUtils;
 
 	private PasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -85,7 +82,5 @@ class TestZenxlAuthController {
 		
 		assertThat(authenticate.getName()).isEqualTo("test");
 	}
-	
-	
-	
+
 }

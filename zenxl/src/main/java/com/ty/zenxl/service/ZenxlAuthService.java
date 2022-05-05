@@ -18,6 +18,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -55,9 +56,10 @@ public class ZenxlAuthService {
 	private final UserRepository userRepository;
 	private final RoleRepository roleRepository;
 	private final PasscodeRepository passcodeRepository;
-	private final PasswordEncoder encoder;
 	private final JwtUtils jwtUtils;
 	private final JavaMailSender emailSender;
+	
+	private PasswordEncoder encoder = new BCryptPasswordEncoder();
 
 	public LoginResponse authenticateUser(LoginRequest request) {
 

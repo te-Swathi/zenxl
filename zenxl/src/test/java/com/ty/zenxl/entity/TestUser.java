@@ -16,18 +16,15 @@ class TestUser {
 
 	private ObjectMapper mapper = new ObjectMapper();
 
-	User user = User.builder().userId(1).username("abc").email("abc@gmail.com").dateOfBirth(new Date("1997/10/10"))
+	User user = User.builder().userId(1).username("abc").email("abc@gmail.com").dateOfBirth(new Date("2020/10/10"))
 			.gender("MALE").password("abc").role(Role.builder().roleId(1).roleName("TEST").build()).build();
 
-	String jsonUser = "{\"userId\":1,\"username\":\"abc\",\"email\":\"abc@gmail.com\",\"dateOfBirth\":876421800000,\"gender\":\"MALE\",\"password\":\"abc\",\"role\":{\"roleId\":1,\"roleName\":\"TEST\",\"user\":null}}";
+	String jsonUser = "{\"userId\":1,\"username\":\"abc\",\"email\":\"abc@gmail.com\",\"dateOfBirth\":1602268200000,\"gender\":\"MALE\",\"password\":\"abc\",\"role\":{\"roleId\":1,\"roleName\":\"TEST\",\"user\":null}}";
 
 	@Test
 	void testSerialization() throws JsonProcessingException, JSONException {
-
 		String writeValueAsString = mapper.writeValueAsString(user);
-
 		JSONAssert.assertEquals(jsonUser, writeValueAsString, false);
-
 	}
 
 	@Test

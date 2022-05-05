@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"username\": \"zenxl\",\n    \"password\": \"indrajit123\"\n}",
+					"raw": "{\n    \"username\": \"indrajit\",\n    \"password\": \"indrajit123\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -20,7 +20,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/api/v1/zenxl/auth/login",
+					"raw": "localhost:8080/api/v1/login",
 					"host": [
 						"localhost"
 					],
@@ -28,8 +28,6 @@
 					"path": [
 						"api",
 						"v1",
-						"zenxl",
-						"auth",
 						"login"
 					]
 				}
@@ -83,7 +81,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/api/v1/zenxl/auth/forgot-password?email=indrajitrana1042@gmail.com",
+					"raw": "localhost:8080/api/v1/zenxl/forgot-password?email=iamindrajitrana@yahoo.com",
 					"host": [
 						"localhost"
 					],
@@ -92,13 +90,12 @@
 						"api",
 						"v1",
 						"zenxl",
-						"auth",
 						"forgot-password"
 					],
 					"query": [
 						{
 							"key": "email",
-							"value": "indrajitrana1042@gmail.com"
+							"value": "iamindrajitrana@yahoo.com"
 						}
 					]
 				}
@@ -112,7 +109,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"email\": \"indrajitrana104@gmail.com\",\n    \"passcode\": \"546484\",\n    \"password\": \"indrajit@1234\",\n    \"rePassword\": \"indrajit@123\"\n}",
+					"raw": "{\n    \"email\": \"indrajitrana104@gmail.com\",\n    \"passcode\": \"275190\",\n    \"password\": \"indrajit@104\",\n    \"rePassword\": \"indrajit@104\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -120,7 +117,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/api/v1/zenxl/auth/change-password",
+					"raw": "localhost:8080/api/v1/zenxl/change-password",
 					"host": [
 						"localhost"
 					],
@@ -129,7 +126,6 @@
 						"api",
 						"v1",
 						"zenxl",
-						"auth",
 						"change-password"
 					]
 				}
